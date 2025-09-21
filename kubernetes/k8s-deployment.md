@@ -1,0 +1,29 @@
+### deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: spring-deployment
+
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-app
+  
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    
+    spec:
+      containers:
+        - name: spring-container
+          image: spring-server
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+```
+
